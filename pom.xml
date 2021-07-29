@@ -22,7 +22,7 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
                 <executions>
-                    <!--execution>
+                    <execution>
                         <id>npm-install</id>
                         <phase>prepare-package</phase>
                         <goals>
@@ -32,7 +32,7 @@
                             <executable>npm</executable>
                             <commandlineArgs>install</commandlineArgs>
                         </configuration>
-                    </execution-->
+                    </execution>
                     <execution>
                         <id>npm-run-build</id>
                         <phase>prepare-package</phase>
