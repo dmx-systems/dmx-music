@@ -1,0 +1,14 @@
+{
+  "name": "dmx-music",
+  "version": "1.0.0",
+  "description": "ID3 tags and playlists for the DMX platform",
+  "author": "Jörg Richter <jri@dmx.berlin>",
+  "license": "AGPL-3.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dmx-systems/dmx-music.git"
+  },
+  "scripts": {
+    "build": "../../node_modules/.bin/webpack -p --hide-modules"
+  }
+}
