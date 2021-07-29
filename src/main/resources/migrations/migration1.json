@@ -1,0 +1,70 @@
+{
+  "topic_types": [
+    {
+      "value":       "Item Description",
+      "uri":         "dmx.music.item_description",
+      "dataTypeUri": "dmx.core.html"
+    },
+    {
+      "value":       "Playlist Item",
+      "uri":         "dmx.music.playlist_item",
+      "dataTypeUri": "dmx.core.entity",
+      "compDefs": [
+        {
+          "childTypeUri":        "dmx.files.file",
+          "childCardinalityUri": "dmx.core.one"
+        },
+        {
+          "childTypeUri":        "dmx.music.item_description",
+          "childCardinalityUri": "dmx.core.one"
+        }
+      ],
+      "viewConfigTopics": [
+        {
+          "typeUri": "dmx.webclient.view_config",
+          "children": {
+            "dmx.webclient.icon": "\uf001"
+          }
+        }
+      ]
+    },
+    {
+      "value":       "Playlist Name",
+      "uri":         "dmx.music.playlist_name",
+      "dataTypeUri": "dmx.core.text"
+    },
+    {
+      "value":       "Playlist Description",
+      "uri":         "dmx.music.playlist_description",
+      "dataTypeUri": "dmx.core.html"
+    },
+    {
+      "value":       "Playlist",
+      "uri":         "dmx.music.playlist",
+      "dataTypeUri": "dmx.core.entity",
+      "compDefs": [
+        {
+          "childTypeUri":        "dmx.music.playlist_name",
+          "childCardinalityUri": "dmx.core.one"
+        },
+        {
+          "childTypeUri":        "dmx.music.playlist_description",
+          "childCardinalityUri": "dmx.core.one"
+        },
+        {
+          "childTypeUri":        "dmx.music.playlist_item",
+          "childCardinalityUri": "dmx.core.many"
+        }
+      ],
+      "viewConfigTopics": [
+        {
+          "typeUri": "dmx.webclient.view_config",
+          "children": {
+            "dmx.webclient.icon": "\uf03a",
+            "dmx.webclient.add_to_create_menu": true
+          }
+        }
+      ]
+    }
+  ]
+}
