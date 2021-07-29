@@ -9,7 +9,7 @@
     "url": "https://github.com/dmx-systems/dmx-music.git"
   },
   "scripts": {
-    "build": "../../node_modules/.bin/webpack -p --hide-modules"
+    "build": "webpack -p --hide-modules"
   },
   "devDependencies": {
     "babel-core": "6.26.3",
