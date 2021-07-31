@@ -1,7 +1,8 @@
 export default {
+
+  state: {
+  },
+
   actions: {
-    handleTopicDrop (_, ids) {
-      console.log('music handleTopicDrop', ids)
-    }
   }
 }

@@ -5,7 +5,12 @@ export default {
     module: require('./music').default
   },
 
-  dropHandler (viewTopic1, viewTopic2) {
-    return viewTopic1.typeUri === 'dmx.files.file' && viewTopic2.typeUri === 'dmx.music.playlist'
+  dropHandler: {
+    isDroppable (topic1, topic2) {
+      return topic1.typeUri === 'dmx.files.file' && topic2.typeUri === 'dmx.music.playlist'
+    },
+    handleDrop (topic1, topic2) {
+      console.log('music handleDrop', topic1, topic2)
+    }
   }
 }
