@@ -1,4 +1,4 @@
-export default {
+export default ({axios: http}) => ({
 
   storeModule: {
     name: 'music',
@@ -11,6 +11,7 @@ export default {
     },
     handleDrop (topic1, topic2) {
       console.log('music handleDrop', topic1, topic2)
+      http.put(`/music/playlist/${topic2.id}/file/${topic1.id}`)
     }
   }
-}
+})
