@@ -1,21 +1,44 @@
 {
   "topic_types": [
+    // Track
     {
-      "value":       "Item Description",
-      "uri":         "dmx.music.item_description",
-      "dataTypeUri": "dmx.core.html"
+      "value":       "Track Title",
+      "uri":         "dmx.music.track_title",
+      "dataTypeUri": "dmx.core.text"
     },
     {
-      "value":       "Playlist Item",
-      "uri":         "dmx.music.playlist_item",
+      "value":       "Artist",
+      "uri":         "dmx.music.artist",
+      "dataTypeUri": "dmx.core.text"
+    },
+    {
+      "value":       "Album",
+      "uri":         "dmx.music.album",
+      "dataTypeUri": "dmx.core.text"
+    },
+    {
+      "value":       "Track",
+      "uri":         "dmx.music.track",
       "dataTypeUri": "dmx.core.entity",
       "compDefs": [
         {
-          "childTypeUri":        "dmx.files.file",
+          "childTypeUri":        "dmx.music.track_title",
           "childCardinalityUri": "dmx.core.one"
         },
         {
-          "childTypeUri":        "dmx.music.item_description",
+          "childTypeUri":        "dmx.music.artist",
+          "childCardinalityUri": "dmx.core.one"
+        },
+        {
+          "childTypeUri":        "dmx.music.album",
+          "childCardinalityUri": "dmx.core.one"
+        },
+        {
+          "childTypeUri":        "dmx.datetime.year",
+          "childCardinalityUri": "dmx.core.one"
+        },
+        {
+          "childTypeUri":        "dmx.files.file",
           "childCardinalityUri": "dmx.core.one"
         }
       ],
@@ -28,6 +51,28 @@
         }
       ]
     },
+    // Playlist Item
+    {
+      "value":       "Item Description",
+      "uri":         "dmx.music.item_description",
+      "dataTypeUri": "dmx.core.html"
+    },
+    {
+      "value":       "Playlist Item",
+      "uri":         "dmx.music.playlist_item",
+      "dataTypeUri": "dmx.core.entity",
+      "compDefs": [
+        {
+          "childTypeUri":        "dmx.music.track",
+          "childCardinalityUri": "dmx.core.one"
+        },
+        {
+          "childTypeUri":        "dmx.music.item_description",
+          "childCardinalityUri": "dmx.core.one"
+        }
+      ]
+    },
+    // Playlist
     {
       "value":       "Playlist Name",
       "uri":         "dmx.music.playlist_name",
