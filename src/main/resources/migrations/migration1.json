@@ -23,11 +23,13 @@
       "compDefs": [
         {
           "childTypeUri":        "dmx.music.track_title",
-          "childCardinalityUri": "dmx.core.one"
+          "childCardinalityUri": "dmx.core.one",
+          "isIdentityAttr":      "true"
         },
         {
           "childTypeUri":        "dmx.music.artist",
-          "childCardinalityUri": "dmx.core.one"
+          "childCardinalityUri": "dmx.core.one",
+          "isIdentityAttr":      "true"
         },
         {
           "childTypeUri":        "dmx.music.album",
