@@ -66,8 +66,7 @@
       "compDefs": [
         {
           "childTypeUri":        "dmx.music.track",
-          "childCardinalityUri": "dmx.core.one",
-          "isIdentityAttr":      true
+          "childCardinalityUri": "dmx.core.one"
         },
         {
           "childTypeUri":        "dmx.music.item_description",
