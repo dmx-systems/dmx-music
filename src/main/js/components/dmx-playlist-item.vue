@@ -7,18 +7,17 @@
 <script>
 export default {
 
-  mixins: [
-    require('./mixins/object').default,       // object to render
-    require('./mixins/level').default,
-    require('./mixins/path').default,
-    require('./mixins/comp-def').default,
-    require('./mixins/context').default
-  ],
+  props: {
+    item: {
+      type: Object,
+      required: true
+    }
+  },
 
   computed: {
 
     track () {
-      return this.object.children['dmx.music.track']
+      return this.item.children['dmx.music.track']
     },
 
     artist () {
@@ -30,7 +29,7 @@ export default {
     },
 
     itemDescription () {
-      return this.object.children['dmx.music.item_description']
+      return this.item.children['dmx.music.item_description']
     }
   }
 }

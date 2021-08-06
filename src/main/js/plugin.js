@@ -5,8 +5,8 @@ export default ({axios: http}) => ({
     module: require('./music').default
   },
 
-  valueRenderers: {
-    'dmx.music.playlist_item': require('./components/dmx-playlist-item').default,
+  objectRenderers: {
+    'dmx.music.playlist': require('./components/dmx-playlist').default,
   },
 
   dropHandler: {
