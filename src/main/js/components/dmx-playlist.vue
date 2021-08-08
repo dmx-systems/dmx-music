@@ -7,7 +7,7 @@
       <dmx-value-renderer :object="description" :level="1" :path="[]" :context="context"></dmx-value-renderer>
     </div>
     <div class="field" v-if="infoMode">
-      <audio :src="currentUrl" controls></audio>
+      <audio :src="currentUrl" controls :autoplay="autoplay" @ended="playNext"></audio>
     </div>
     <div class="field">
       <div class="field-label">{{items.length}} items</div>
@@ -77,6 +77,17 @@ export default {
 
     currentUrl () {
       return this.fileUrls[this.playPos]
+    },
+
+    autoplay () {
+      return this.playPos > 0
+    }
+  },
+
+  methods: {
+    playNext () {
+      console.log('playNext')
+      this.playPos++
     }
   },
 
