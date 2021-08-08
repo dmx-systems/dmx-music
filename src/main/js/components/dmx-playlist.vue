@@ -7,6 +7,9 @@
       <dmx-value-renderer :object="description" :level="1" :path="[]" :context="context"></dmx-value-renderer>
     </div>
     <div class="field">
+      <audio :src="currentUrl" controls></audio>
+    </div>
+    <div class="field">
       <div class="field-label">{{items.length}} items</div>
       <ol>
         <template v-if="infoMode">
@@ -42,6 +45,12 @@ export default {
     }
   },
 
+  data () {
+    return {
+      playPos: 0
+    }
+  },
+
   computed: {
 
     mode () {
@@ -58,8 +67,18 @@ export default {
 
     items () {
       return this.object.children['dmx.music.playlist_item']
+    },
+
+    fileUrls () {
+      return this.items.map(item => '/filerepo/' + encodeURIComponent(
+        item.children['dmx.music.track'].children['dmx.files.file'].children['dmx.files.path'].value
+      ))
+    },
+
+    currentUrl () {
+      return this.fileUrls[this.playPos]
     }
- },
+  },
 
   components: {
     'dmx-playlist-item': require('./dmx-playlist-item').default,
