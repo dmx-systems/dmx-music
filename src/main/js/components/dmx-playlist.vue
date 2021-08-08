@@ -6,7 +6,7 @@
     <div class="field">
       <dmx-value-renderer :object="description" :level="1" :path="[]" :context="context"></dmx-value-renderer>
     </div>
-    <div class="field">
+    <div class="field" v-if="infoMode">
       <audio :src="currentUrl" controls></audio>
     </div>
     <div class="field">
