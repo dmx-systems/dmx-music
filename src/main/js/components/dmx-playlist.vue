@@ -29,10 +29,18 @@
 export default {
 
   mixins: [
-    require('./mixins/object').default,       // the playlist to render
+    // require('./mixins/object').default,       // the playlist to render
     require('./mixins/info-mode').default,
     require('./mixins/context').default
   ],
+
+  props: {
+    // the playlist to render
+    object: {
+      type: Object,   // dmx.DMXObject ### we can't rely on 'dmx'; injections are not available on 'props' processing
+      required: true
+    }
+  },
 
   computed: {
 
