@@ -1,6 +1,7 @@
 <template>
   <div class="dmx-playlist-item">
-    {{artist}} - {{trackTitle}}
+    <div>{{artist}} - {{trackTitle}}</div>
+    <div class="description" v-html="description"></div>
   </div>
 </template>
 
@@ -20,6 +21,11 @@ export default {
       return this.item.children['dmx.music.track']
     },
 
+    description () {
+      const desc = this.item.children['dmx.music.item_description']
+      return desc && desc.value
+    },
+
     artist () {
       return this.track.children['dmx.music.artist'].value
     },
@@ -34,3 +40,13 @@ export default {
   }
 }
 </script>
+
+<style>
+.dmx-playlist-item .description p {
+  color: var(--label-color);
+  font-size: var(--label-font-size);
+  line-height: 1.4;
+  margin-top: 5px;
+  margin-bottom: 0px;
+}
+</style>

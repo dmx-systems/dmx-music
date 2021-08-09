@@ -112,6 +112,6 @@ export default {
 }
 
 .dmx-playlist ol li {
-  line-height: var(--line-height);
+  margin-top: 10px;
 }
 </style>
