@@ -14,13 +14,13 @@
       <ol>
         <template v-if="infoMode">
           <li v-for="item in items">
-            <dmx-playlist-item :item="item"></dmx-playlist-item>
+            <dmx-playlist-item :item="item" :context="context"></dmx-playlist-item>
           </li>
         </template>
         <draggable v-else :list="items" :animation="300">
           <!-- 3 lines duplicated in favor of code splitting; TODO: avoid -->
           <li v-for="item in items">
-            <dmx-playlist-item :item="item"></dmx-playlist-item>
+            <dmx-playlist-item :item="item" :context="context"></dmx-playlist-item>
           </li>
         </draggable>
       </ol>

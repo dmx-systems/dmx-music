@@ -1,12 +1,17 @@
 <template>
   <div class="dmx-playlist-item">
     <div>{{artist}} - {{trackTitle}}</div>
-    <div class="description" v-html="description"></div>
+    <dmx-value-renderer v-if="description" :object="description" :level="1" :path="[]" :context="context">
+    </dmx-value-renderer>
   </div>
 </template>
 
 <script>
 export default {
+
+  mixins: [
+    require('./mixins/context').default
+  ],
 
   props: {
     item: {
@@ -22,8 +27,7 @@ export default {
     },
 
     description () {
-      const desc = this.item.children['dmx.music.item_description']
-      return desc && desc.value
+      return this.item.children['dmx.music.item_description']
     },
 
     artist () {
