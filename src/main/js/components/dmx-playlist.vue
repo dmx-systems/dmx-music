@@ -5,11 +5,11 @@
         :context="context">
       </dmx-value-renderer>
     </div>
-    <div class="field">
+    <div class="field" v-if="description">
       <dmx-value-renderer :object="description" :no-field-label="infoMode" :level="1" :path="[]" :context="context">
       </dmx-value-renderer>
     </div>
-    <div class="field" v-if="infoMode">
+    <div class="field" v-if="playerVisible">
       <audio :src="currentUrl" controls :autoplay="autoplay" @ended="playNext"></audio>
     </div>
     <div class="field">
@@ -68,7 +68,7 @@ export default {
     },
 
     items () {
-      return this.object.children['dmx.music.playlist_item']
+      return this.object.children['dmx.music.playlist_item'] || []
     },
 
     fileUrls () {
@@ -79,6 +79,10 @@ export default {
 
     currentUrl () {
       return this.fileUrls[this.playPos]
+    },
+
+    playerVisible () {
+      return this.infoMode && this.items.length
     },
 
     autoplay () {
