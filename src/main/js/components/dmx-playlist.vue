@@ -1,16 +1,18 @@
 <template>
   <div class="dmx-playlist">
     <div class="field">
-      <dmx-value-renderer :object="name" :level="1" :path="[]" :context="context"></dmx-value-renderer>
+      <dmx-value-renderer class="name" :object="name" :no-field-label="infoMode" :level="1" :path="[]"
+        :context="context">
+      </dmx-value-renderer>
     </div>
     <div class="field">
-      <dmx-value-renderer :object="description" :level="1" :path="[]" :context="context"></dmx-value-renderer>
+      <dmx-value-renderer :object="description" :no-field-label="infoMode" :level="1" :path="[]" :context="context">
+      </dmx-value-renderer>
     </div>
     <div class="field" v-if="infoMode">
       <audio :src="currentUrl" controls :autoplay="autoplay" @ended="playNext"></audio>
     </div>
     <div class="field">
-      <div class="field-label">{{items.length}} items</div>
       <ol>
         <template v-if="infoMode">
           <li v-for="item in items">
@@ -102,6 +104,11 @@ export default {
 </script>
 
 <style>
+.dmx-playlist .name.info {
+  font-size: 32px;
+  font-weight: bold;
+}
+
 .dmx-playlist .field + .field {
   margin-top: var(--field-spacing);
 }
