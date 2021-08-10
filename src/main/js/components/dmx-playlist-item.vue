@@ -1,7 +1,8 @@
 <template>
   <div class="dmx-playlist-item">
     <div>{{artist}} - {{trackTitle}}</div>
-    <dmx-value-renderer v-if="description" :object="description" :level="1" :path="[]" :context="context">
+    <dmx-value-renderer class="description" v-if="description" :object="description" noFieldLabel :level="1" :path="[]"
+      :context="context">
     </dmx-value-renderer>
   </div>
 </template>
@@ -46,11 +47,18 @@ export default {
 </script>
 
 <style>
+.dmx-playlist-item .description {
+  margin-top: 5px;
+}
+
 .dmx-playlist-item .description p {
   color: var(--label-color);
   font-size: var(--label-font-size);
   line-height: 1.4;
+  margin: 0;
+}
+
+.dmx-playlist-item .description p + p {
   margin-top: 5px;
-  margin-bottom: 0px;
 }
 </style>

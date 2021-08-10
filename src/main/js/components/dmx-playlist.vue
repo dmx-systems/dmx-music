@@ -112,6 +112,6 @@ export default {
 }
 
 .dmx-playlist ol li {
-  margin-top: 10px;
+  margin-top: 12px;
 }
 </style>
