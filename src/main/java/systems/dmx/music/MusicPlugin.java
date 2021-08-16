@@ -60,7 +60,7 @@ public class MusicPlugin extends PluginActivator implements MusicService {
             ));
             playlist.update(mf.newChildTopicsModel().addRef(PLAYLIST_ITEM, item.getId()));
             ChildTopicsSequence s = new ChildTopicsSequence(playlist, PLAYLIST_ITEM, COMPOSITION, dmx);
-            s.add(item, null);
+            s.insert(item.getId(), -1);
         } catch (Exception e) {
             throw new RuntimeException("Adding file " + fileId + " to playlist " + playlistId + " failed", e);
         }
