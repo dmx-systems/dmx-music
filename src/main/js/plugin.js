@@ -6,20 +6,7 @@ export default ({dmx, axios: http}) => ({
   },
 
   objectRenderers: {
-    'dmx.music.playlist': {
-      comp: require('./components/dmx-playlist').default,
-      model: {
-        customize (formModel, object) {
-          const items = object.children['dmx.music.playlist_item']
-          const descType = dmx.typeCache.getTopicType('dmx.music.item_description')
-          let i = 0
-          formModel.children['dmx.music.playlist_item'].forEach(item => {
-            const desc = items[i++].children['dmx.music.item_description']
-            item.children['dmx.music.item_description'] = new dmx.Topic(descType._newInstance(desc))
-          })
-        }
-      }
-    }
+    'dmx.music.playlist': require('./components/dmx-playlist').default
   },
 
   dropHandler: {

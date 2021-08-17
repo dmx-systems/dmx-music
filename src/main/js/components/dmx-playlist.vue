@@ -15,14 +15,14 @@
     <div class="field">
       <ol>
         <template v-if="infoMode">
-          <li v-for="item in items">
-            <dmx-playlist-item :item="item" :context="context"></dmx-playlist-item>
+          <li v-for="track in tracks">
+            <dmx-playlist-track :track="track" :context="context"></dmx-playlist-track>
           </li>
         </template>
-        <draggable v-else :list="items" :animation="300">
+        <draggable v-else :list="tracks" :animation="300">
           <!-- 3 lines duplicated in favor of code splitting; TODO: avoid -->
-          <li v-for="item in items">
-            <dmx-playlist-item :item="item" :context="context"></dmx-playlist-item>
+          <li v-for="track in tracks">
+            <dmx-playlist-track :track="track" :context="context"></dmx-playlist-track>
           </li>
         </draggable>
       </ol>
@@ -67,13 +67,13 @@ export default {
       return this.object.children['dmx.music.playlist_description']
     },
 
-    items () {
-      return this.object.children['dmx.music.playlist_item'] || []
+    tracks () {
+      return this.object.children['dmx.music.track#dmx.music.playlist_item'] || []
     },
 
     fileUrls () {
-      return this.items.map(item => '/filerepo/' + encodeURIComponent(
-        item.children['dmx.music.track'].children['dmx.files.file'].children['dmx.files.path'].value
+      return this.tracks.map(track => '/filerepo/' + encodeURIComponent(
+        track.children['dmx.files.file'].children['dmx.files.path'].value
       ))
     },
 
@@ -82,7 +82,7 @@ export default {
     },
 
     playerVisible () {
-      return this.infoMode && this.items.length
+      return this.infoMode && this.tracks.length
     },
 
     autoplay () {
@@ -98,7 +98,7 @@ export default {
   },
 
   components: {
-    'dmx-playlist-item': require('./dmx-playlist-item').default,
+    'dmx-playlist-track': require('./dmx-playlist-track').default,
     draggable: () => ({
       component: import('vuedraggable' /* webpackChunkName: "vuedraggable" */),
       loading: require('./dmx-spinner')
