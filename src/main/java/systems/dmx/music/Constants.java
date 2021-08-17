@@ -12,6 +12,8 @@ public class Constants {
     public static final String PLAYLIST             = "dmx.music.playlist";
     public static final String PLAYLIST_NAME        = "dmx.music.playlist_name";
     public static final String PLAYLIST_DESCRIPTION = "dmx.music.playlist_description";
-    public static final String PLAYLIST_ITEM        = "dmx.music.playlist_item";
     public static final String ITEM_DESCRIPTION     = "dmx.music.item_description";
+
+    // Assoc Types
+    public static final String PLAYLIST_ITEM        = "dmx.music.playlist_item";
 }

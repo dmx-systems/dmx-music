@@ -49,18 +49,17 @@ public class MusicPlugin extends PluginActivator implements MusicService {
             Tags tags = TagReader.read(fs.getFile(fileId));
             logger.info("Adding file " + fileId + " to playlist " + playlistId + ", tags: " + tags);
             Topic playlist = dmx.getTopic(playlistId);
-            Topic item = dmx.createTopic(mf.newTopicModel(PLAYLIST_ITEM, mf.newChildTopicsModel()
-                .set(TRACK, mf.newChildTopicsModel()
-                    .set(TRACK_TITLE, tags.title)
-                    .set(ARTIST, tags.artist)
-                    .set(ALBUM, tags.album)
-                    .set(YEAR, tags.year)
-                    .setRef(FILE, fileId)
-                )
+            Topic track = dmx.createTopic(mf.newTopicModel(TRACK, mf.newChildTopicsModel()
+                .set(TRACK_TITLE, tags.title)
+                .set(ARTIST, tags.artist)
+                .set(ALBUM, tags.album)
+                .set(YEAR, tags.year)
+                .setRef(FILE, fileId)
             ));
-            playlist.update(mf.newChildTopicsModel().addRef(PLAYLIST_ITEM, item.getId()));
-            ChildTopicsSequence s = new ChildTopicsSequence(playlist, PLAYLIST_ITEM, COMPOSITION, dmx);
-            s.insert(item.getId(), -1);
+            playlist.update(mf.newChildTopicsModel().addRef(TRACK + "#" + PLAYLIST_ITEM, track.getId()));
+            //
+            ChildTopicsSequence s = new ChildTopicsSequence(playlist, TRACK, PLAYLIST_ITEM, dmx);
+            s.insert(track.getId(), -1);
         } catch (Exception e) {
             throw new RuntimeException("Adding file " + fileId + " to playlist " + playlistId + " failed", e);
         }
