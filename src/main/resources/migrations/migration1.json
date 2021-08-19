@@ -20,6 +20,15 @@
             "childTypeUri":        "dmx.music.item_description",
             "childCardinalityUri": "dmx.core.one"
           }
+        ],
+        "viewConfigTopics": [
+          {
+            "typeUri": "dmx.webclient.view_config",
+            "children": {
+              "dmx.webclient.color": "hsl(5, 50%, 53%)",
+              "dmx.webclient.color#dmx.webclient.background_color": "hsl(5, 80%, 96%)"
+            }
+          }
         ]
       }
     ]
