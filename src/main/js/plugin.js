@@ -17,7 +17,9 @@ export default ({dmx, axios: http}) => ({
 
     handleDrop (topic1, topic2) {
       // console.log('music handleDrop', topic1, topic2)
-      http.put(`/music/playlist/${topic2.id}/file/${topic1.id}`)
+      if (topic1.typeUri === 'dmx.files.file' && topic2.typeUri === 'dmx.music.playlist') {
+        http.put(`/music/playlist/${topic2.id}/file/${topic1.id}`)
+      }
     }
   }
 })
