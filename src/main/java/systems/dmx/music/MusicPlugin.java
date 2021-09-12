@@ -1,6 +1,5 @@
 package systems.dmx.music;
 
-import static systems.dmx.core.Constants.*;
 import static systems.dmx.datetime.Constants.*;
 import static systems.dmx.files.Constants.*;
 import static systems.dmx.music.Constants.*;
@@ -9,7 +8,6 @@ import systems.dmx.core.Topic;
 import systems.dmx.core.osgi.PluginActivator;
 import systems.dmx.core.service.Inject;
 import systems.dmx.core.service.Transactional;
-import systems.dmx.core.util.ChildTopicsSequence;
 import systems.dmx.files.FilesService;
 
 import javax.ws.rs.GET;
@@ -57,9 +55,6 @@ public class MusicPlugin extends PluginActivator implements MusicService {
                 .setRef(FILE, fileId)
             ));
             playlist.update(mf.newChildTopicsModel().addRef(TRACK + "#" + PLAYLIST_ITEM, track.getId()));
-            //
-            ChildTopicsSequence s = new ChildTopicsSequence(playlist, TRACK, PLAYLIST_ITEM, dmx);
-            s.insert(track.getId(), -1);
         } catch (Exception e) {
             throw new RuntimeException("Adding file " + fileId + " to playlist " + playlistId + " failed", e);
         }
