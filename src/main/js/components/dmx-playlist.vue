@@ -19,10 +19,13 @@
             <dmx-playlist-track :track="track" :context="context"></dmx-playlist-track>
           </li>
         </template>
-        <draggable v-else :list="tracks" :animation="300">
-          <!-- 3 lines duplicated in favor of code splitting; TODO: avoid -->
+        <draggable v-else :list="tracks" handle=".handle" :animation="300" @start="drag=true" @end="drag=false">
+          <!-- 3 lines duplicated in favor of code splitting -->
           <li v-for="track in tracks">
-            <dmx-playlist-track :track="track" :context="context"></dmx-playlist-track>
+            <div class="track">
+              <dmx-playlist-track :track="track" :context="context"></dmx-playlist-track>
+              <div :class="['handle', {drag}]"></div>
+            </div>
           </li>
         </draggable>
       </ol>
@@ -49,7 +52,8 @@ export default {
 
   data () {
     return {
-      playPos: 0
+      playPos: 0,
+      drag: false
     }
   },
 
@@ -124,5 +128,29 @@ export default {
 
 .dmx-playlist ol li {
   margin-top: 12px;
+}
+
+.dmx-playlist ol li .track {
+  display: flex;
+}
+
+.dmx-playlist ol li .track .dmx-playlist-track {
+  flex-grow: 1;
+}
+
+.dmx-playlist ol li .track .handle {
+  flex-basis: 12px;
+  flex-shrink: 0;
+  margin-left: 12px;
+  background-image: url("../../resources/dots.png");
+  border: 2px solid white;
+}
+
+.dmx-playlist ol li .track .handle:hover {
+  cursor: grab;
+}
+
+.dmx-playlist ol li .track .handle.drag {
+  cursor: grabbing !important;
 }
 </style>
